@@ -1,0 +1,222 @@
+<%- include('../Includes/header.ejs') %>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<body>
+	<style type="text/css">
+		
+		.parallax-home-1 {
+		  background-image: url("/public/img/home_parallax.jpg");
+		}
+		.parallax-home-2 {
+		  background-image: url("/public/img/home_parallax2.jpg");
+		}
+		.parallax-home-3 {
+		  background-image: url("/public/img/home_parallax3.jpg");
+		}
+		.heading-pre-animation{
+            animation-duration: 3s;
+		}
+		body{
+			background: #F9F9F9 ;
+		}
+		@keyframes fadeInRight {
+            0% {
+               opacity: 0;
+               transform: translateX(200px);
+            }
+            100% {
+               opacity: 1;
+               transform: translateX(0);
+            }
+         }
+         .fadeInRight {
+	         animation-name: fadeInRight;
+		 } 
+		 @media screen and (max-width: 786px) {
+			.ticketimg{
+				display: none;
+			}	 
+		 }
+	</style>
+	<%- include('../Includes/nav.ejs') %>
+	<div class="site-heading">
+		<div class="row-fluid">
+			<div class="column-6" align="left">
+				<h1 id="heading">
+					<span id="head-1">Pop</span><span id="head-2">Flix</span>
+				</h1>
+				<h4 class="sub-heading-home">
+					<font color="#f00">Any Show</font>
+					<font color="white">, Any Time</font>
+				</h4>
+				<%if(!user){%>
+				<form action="/user/login" method="POST" style="display: none;" id="login-form"
+					class="login-form sub-heading-home">
+					<label for="email" style="font-size:medium; color:#b3b3b3;">Email / Username</label><br />
+					<input class="inp" type="text" name="username" required><br><br>
+					<label for="password" style="font-size:medium ;color:#b3b3b3;">Password</label><br />
+					<input class="inp" type="password" name="password" required><br><br>
+					<button class="btn-curved red-text login">Login</button>
+					<p style="font-size: small;">Not yet Registered??<a href="/flix/home"
+							style="color: #ff0000; margin-left: 10px;">Go Back!</a></p>
+				</form>
+				<div id="btns">
+					<h3 class="heading-btns-home"><button class="btn-curved red-text login"
+							onclick="showLogin();disableScrollEffect();">Login</button> <button
+							onclick="document.getElementById('id01').style.display='block';disableScrollEffect();"
+							class="btn-curved bg-red signup">Signup</button></h3>
+				</div>
+				<%}%>
+			</div>
+			<div class="column-6" align="center">
+				<img height="400px" src="/public/img/home-heading.svg" class="heading-pre-animation fadeInRight">
+			</div>
+
+<!-- The Modal (contains the Sign Up form) -->
+			<div id="id01" class="modal">
+				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<form class="modal-content" action="/user/signup" method="POST">
+					<h1 style="margin-left: 3%;margin-right: 3%; color:white;">Sign Up</h1>
+					<hr style="margin-left: 3%;margin-right: 3%;">
+					<div style="flex-direction: row;display: flex;" id="signup-form">
+				 		 <div class="container" style="flex:3" >
+							<label for="name" class="hh"><b>Name</b></label><br/>
+							<input type="text" class="s_inp" pattern="^[A-Za-z]{1,}[ ][A-Za-z]{1,}" placeholder="Enter Name" name="name" required title="Enter Full Name seperated by a space">
+							<div class="muted"> Enter First Name and Last Name</div>
+							<br/>
+							<label for="email" class="hh"><b>Email</b></label><br/>
+							<input type="email" class="s_inp" placeholder="Enter Email" name="email" required>
+							<br/>
+							<label for="psw" class="hh"><b>Password</b></label><br/>
+							<input type="password" class="s_inp" placeholder="Enter Password" minlength="8" name="psw" required>
+							<br/>
+							<label for="psw-repeat" class="hh"><b>Repeat Password</b></label><br/>
+							<input type="password" class="s_inp" placeholder="Repeat Password" minlength="8" name="psw-repeat" required>
+							<label for="psw-repeat" class="hh"><b>Phone Number</b></label><br/>
+							<input type="text" class="s_inp" placeholder="Phone Number" pattern="^[7-9][0-9]{9}" name="phone" required title="Invalid Number Format (Make sure it starts with 6 to 9 and has 10 digits">
+							<div class="muted">10 digit valid Indian mobile number</div>
+							<label for="psw-repeat" class="hh"><b>Gender</b></label><br/>
+							<input type="radio" id="male" name="gender" value="M" required>
+							<label for="male">Male</label>
+							<input type="radio" id="female" name="gender" value="F" required>
+							<label for="female">Female</label>
+							<input type="radio" id="other" name="gender" value="O" required>
+							<label for="other">Other</label>
+							<p class="hh">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+							<div class="clearfix">
+							  <button type="button" style="background-color: gray;" onclick="document.getElementById('id01').style.display='none'" class="btn-curved bg-red signup">Cancel</button>
+							  <button type="submit" class="btn-curved bg-red signup">Sign Up</button>
+							</div>
+						</div>
+						<div style="flex: 2;margin-top: 2%;">
+							<img height="400px" style="transform:rotate(340deg);" class="ticketimg" src="/public/img/signup.png">
+						</div>
+				 	</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="parallax parallax-home-1" id="parallax-1">
+		<h2 align="right" style="right: 15%; position: absolute;top: 30%;color:#f00;font-family: 'Lobster', cursive;font-size: 50px;">
+			Broadcasting in<br/> 
+			1000+ Theaters
+		</h2>
+	</div>
+	<div class="parallax parallax-home-2" id="parallax-2">
+		<h2 align="center" style="left: 42%; position: absolute;top: 30%;color:#fff;font-family: 'Lobster', cursive;font-size: 50px;">
+			Get Tickets for<br/> Any Movie
+		</h2>
+	</div>
+	<div class="parallax parallax-home-3" id="parallax-3">
+		<h2 align="left" style="left: 15%; position: absolute;top: 30%;color:#f00;font-family: 'Lobster', cursive;font-size: 50px;">
+			Pick a time<br/> And reserve your seats
+		</h2>
+	</div>
+	<div align="center" id="subscribe-news">
+		<form>
+			<b><label htmlfor="#email-sub"> Get the latest updates</label></b>
+			<input type="email" minlength="5" maxlength="30" placeholder="Enter your Email" id="email-sub"
+				class="input-text" name="email" required />
+			<button type="submit" class="red-btn">Subscribe</button>
+		</form>
+	</div>
+	
+	<%- include('../Includes/footer.ejs') %>
+	<script type="text/javascript">
+		window.onload = function animateTitle() {
+			document.getElementById('head-1').innerHTML = "P"
+			document.getElementById('head-2').innerHTML = " "
+			setTimeout(function () {
+				document.getElementById('head-1').innerHTML = "Po"
+			}, 150);
+			setTimeout(function () {
+				document.getElementById('head-1').innerHTML = "Pop"
+			}, 300);
+			setTimeout(function () {
+				document.getElementById('head-2').innerHTML = "F"
+			}, 450);
+			setTimeout(function () {
+				document.getElementById('head-2').innerHTML = "Fl"
+			}, 600);
+
+			setTimeout(function () {
+				document.getElementById('head-2').innerHTML = "Fli"
+			}, 750);
+
+			setTimeout(function () {
+				document.getElementById('head-2').innerHTML = "Flix"
+			}, 900);
+		}
+
+		scrolledTo1 = false;
+		scrolledTo2 = false;
+		scrolledTo3 = false;
+		isScrolling = false;
+		function disableScrollEffect(){
+			scrolledTo1 = true;
+			scrolledTo2 = true;
+			scrolledTo3 = true;
+		}
+		if(window.pageYOffset!==0){
+			disableScrollEffect();
+		}
+		window.onscroll = function animateHomeScroll(){
+			if(!isScrolling){
+				scroll_height = window.pageYOffset;
+				if(!scrolledTo1 && scroll_height<document.getElementById('parallax-1').offsetTop){
+					isScrolling = true;
+					window.scrollTo({
+					    top: document.getElementById('parallax-1').offsetTop,
+					    behavior: "smooth",
+					});
+					scrolledTo1 = true;
+					setTimeout(function () {
+						isScrolling = false;
+					}, 650);
+				}
+				else if (!scrolledTo2 && scroll_height<document.getElementById('parallax-2').offsetTop){
+					isScrolling = true;
+					window.scrollTo({
+					    top: document.getElementById('parallax-2').offsetTop,
+					    behavior: "smooth",
+					});
+					scrolledTo2 = true;
+					setTimeout(function () {
+						isScrolling = false;
+					}, 650);
+				}
+				else if (!scrolledTo3 && scroll_height<document.getElementById('parallax-3').offsetTop){
+					isScrolling = true;
+					window.scrollTo({
+					    top: document.getElementById('parallax-3').offsetTop,
+					    behavior: "smooth",
+					});
+					scrolledTo3 = true;
+					setTimeout(function () {
+						isScrolling = false;
+					}, 650);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

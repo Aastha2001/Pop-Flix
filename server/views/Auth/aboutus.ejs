@@ -1,0 +1,135 @@
+<%- include('../Includes/header.ejs') %>
+
+<body>
+    <%- include('../Includes/nav.ejs') %>
+
+
+
+    <div class="site-heading" style="
+    padding-bottom: 80px;padding-top: 40px ">
+        <h1 align="center" class="red-text" style="font-size: 4.5em;">About <font color="white"> Us </font>
+        </h1>
+        <p align="center">PopFlix Service is a one stop solution for all your entertainment needs.</p>
+
+    </div>
+    <div class="content">
+        <div align="center">
+            <table class="customTable" style="margin: 5px;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Technology Used</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>FRONTEND</td>
+                        <td>HTML5, CSS3, JAVASCRIPT</td>
+                    </tr>
+                    <tr>
+                        <td>BACKEND</td>
+                        <td>MYSQL, NODEJS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2 style="margin-top: 70px;font-size: 3em; font-weight: 800" align="center">Our Team</h2>
+        <div class="row">
+            <div class="column-4" style="border-right: 3px solid black;">
+                <div align="center">
+                    <img src="../../public/img/person_aastha.png" alt="Avatar" style="height: 100px">
+
+                    <h2>Aastha Patel</h2>
+                    <p>+91 89183 65626</p>
+                    <p><button class="btn-curved red-text contact bg-red">Contact</button></p>
+                </div>
+            </div>
+            <div class="column-4" style="border-right: 3px solid black;">
+                <div align="center">
+
+
+                    <img src="../../public/img/person_anjali.png" alt="Avatar" style="height: 100px;">
+
+                    <h2>Anjali Singh</h2>
+                    <p>+91 67180 63269</p>
+                    <p><button class="btn-curved red-text contact bg-red">Contact</button></p>
+
+                </div>
+            </div>
+            <div class="column-4" style="border-right: 3px solid black;">
+                <div align="center">
+
+
+                    <img src="../../public/img/person_bhagya.png" alt="Avatar" style="height: 100px;">
+
+                    <h2>Bhagya Rana</h2>
+                    <p>+91 73187 74141</p>
+                    <p><button class="btn-curved red-text contact bg-red">Contact</button></p>
+
+                </div>
+            </div>
+            <div class="column-4">
+                <div align="center">
+
+
+                    <img src="../../public/img/person_krishna.png" alt="Avatar" style="height: 100px;">
+
+                    <h2>Krishna Patel</h2>
+                    <p>+91 88478 57495</p>
+                    <p><button class="btn-curved red-text contact bg-red">Contact</button></p>
+
+                </div>
+            </div>
+        </div>
+        <h2 align="center" style="margin-top: 70px;font-size: 3em; font-weight: 800">Quick Facts</h2>
+        <hr style="width: 50%; text-align: center;color: #181818;">
+        <div class="row">
+            <div class="column-4 line-spacing" align="center">
+                <img height="100px" width="130px" src="../../public/img/customer.png"><br />
+                <p><b><span id="count1"></span>+</b></p>
+                <p>Strong</p>
+            </div>
+            <div class="column-4 line-spacing" align="center">
+                <img height="100px" width="100px" src="../../public/img/india.png"><br />
+                <p><b><span id="count2"></span>+</b></p>
+                <p>Cities</p>
+            </div>
+            <div class="column-4 line-spacing" align="center">
+                <img height="100px" width="100px" src="../../public/img/screen.png"><br />
+                <p><b><span id="count3"></span>+</b></p>
+                <p>Screens</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <%- include('../Includes/footer.ejs') %>
+
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            function counter(id, start, end, duration) {
+                let obj = document.getElementById(id),
+                    current = start,
+                    range = end - start,
+                    increment = end > start ? 1 : -1,
+                    step = Math.abs(Math.floor(duration / range)),
+                    timer = setInterval(() => {
+                        current += increment;
+                        obj.textContent = current;
+                        if (current == end) {
+                            clearInterval(timer);
+                        }
+                    }, step);
+            }
+            counter("count1", 0, 4000, 1);
+            counter("count2", 0, 100, 2500);
+            counter("count3", 0, 1000, 3000);
+        });
+
+    </script>
+</body>
+
+
+</html>

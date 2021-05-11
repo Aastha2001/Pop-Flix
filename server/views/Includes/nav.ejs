@@ -1,0 +1,70 @@
+<!-- Navigation Bar -->
+<div class="nav row-fluid">
+  <div class="column-6" align="left">
+    <a href="/flix/home" class="brand">
+      <h4 id="navhome"><span>Pop</span><span>Flix</span></h4>
+    </a>
+  </div>
+  <div id="list-open" align="right" onclick="showNav()">&equiv;</div>
+  <div class="column-6" align="right">
+    <ul type="none" id="nav-list">
+      <li id="home-nav-mobile-only">
+        <a href="/" class="">Home</a>
+      </li>
+      <li>
+        <a href="/user/book_flix" class="<%= pg==='book_flix'? 'on':'' %>"
+          >Book Flix</a
+        >
+      </li>
+      <li>
+        <a href="/user/book_movie" class="<%= pg==='book_movie'? 'on':'' %>"
+          >Book Movie</a
+        >
+      </li>
+      <li>
+        <a href="/flix/aboutus" class="<%= pg==='aboutus'? 'on':'' %>"
+          >About Us</a
+        >
+      </li>
+      <%if(user && user.type === "Customer"){%>
+      <li>
+        <a href="/user/profile" class="<%= pg==='profile'? 'on':'' %>"
+          >Profile</a
+        >
+      </li>
+      <%}%> <%if(user && user.type==="Admin"){%>
+      <li>
+        <a href="/admin/home" class="login-nav">Admin</a>
+      </li>
+      <%}%> <%if(user && user.type==="Theater"){%>
+      <li>
+        <a href="/flix/profile" class="<%= pg==='profile'? 'on':'' %>"
+          >Profile</a
+        >
+      </li>
+      <%}%>
+      <li>
+        <%if(user){%>
+        <a href="/user/logout" class="">Logout</a>
+        <%}%>
+      </li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    function showNav() {
+      if (document.getElementById('nav-list').style.display === 'block') {
+        document.getElementById('nav-list').style.display = 'none';
+      } else {
+        document.getElementById('nav-list').style.display = 'block';
+      }
+    }
+  </script>
+  <!-- <li class="dropdown"><a href="" class="dropbtn">User Menu </a>
+
+	<div class="dropdown-content">
+		<a href="#">Login</a><br>
+		<a href="#">Profile</a>
+	</div>
+</li> -->
+</div>
+<!-- End of Navigation Bar -->

@@ -1,0 +1,21 @@
+<%- include('../Includes/header.ejs') %>
+<style>
+  .error-msg {
+    font-size: 5rem;
+  }
+  @media screen and (max-width: 786px) {
+    .error-msg {
+      font-size: 2rem;
+    }
+  }
+</style>
+<body>
+  <div class="content">
+    <div align="center">
+      <img src="/public/img/tickets.png" width="100%" style="opacity: 0.2" />
+      <div class="error-msg">Sorry! <%- error %></div>
+    </div>
+  </div>
+
+  <%- include('../Includes/nav.ejs') %> <%- include('../Includes/footer.ejs') %>
+</body>
